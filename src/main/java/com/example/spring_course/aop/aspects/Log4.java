@@ -11,8 +11,9 @@ import org.springframework.stereotype.Component;
 public class Log4 {
 
     @Before("com.example.spring_course.aop.aspects.MyPointcuts.allGetMethodsBesidesReturnMagazineUniLibrary()")
-    public void beforeGetAndReturnBesidesReturnMagazineLoggingAdvice() {
-        System.out.println("beforeGetAndReturnLoggingAdvice: writing Log #4");
+    public void beforeAddAndReturnBesidesReturnMagazineLoggingAdvice() {
+        System.out.println("beforeAddAndReturnBesidesReturnMagazineLoggingAdvice: writing Log #4");
+        System.out.println("--------------------------------------------------------");
     }
 
 }

@@ -13,6 +13,7 @@ public class Log2 {
     @Before("com.example.spring_course.aop.aspects.MyPointcuts.allReturnMethodsFromUniLibrary()")
     public void beforeReturnLoggingAdvice() {
         System.out.println("beforeReturnLoggingAdvice: writing Log #2");
+        System.out.println("--------------------------------------------------------");
     }
 
 }
