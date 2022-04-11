@@ -12,9 +12,9 @@ public class UniLibrary extends AbstractLibrary {
     }
 
     @Override
-    public void returnBook() {
+    public String returnBook() {
         System.out.println("Мы возвращаем книгу в UniLibrary");
-        System.out.println("--------------------------------------------------------");
+        return "Война и мир";
     }
 
     public void getMagazine() {
