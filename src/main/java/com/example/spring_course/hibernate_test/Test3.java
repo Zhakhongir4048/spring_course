@@ -8,9 +8,11 @@ import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Test1 {
+import java.util.List;
 
-    private static final Logger log = LoggerFactory.getLogger(Test1.class);
+public class Test3 {
+
+    private static final Logger log = LoggerFactory.getLogger(Test3.class);
 
     public static void main(String[] args) {
 
@@ -21,11 +23,15 @@ public class Test1 {
         try (sessionFactory) {
             Session currentSession = sessionFactory.getCurrentSession();
             currentSession.beginTransaction();
-            Employee employee = new Employee("Zhakhongir", "Esonov", "IT", 4);
-            currentSession.save(employee);
+
+            List<Employee> emp = currentSession.createQuery("from Employee").getResultList();
+            List<Employee> emp2 = currentSession.createQuery("from Employee where name = 'Oleg'").getResultList();
+
+            emp.forEach(System.out::println);
+            emp2.forEach(System.out::println);
+
             currentSession.getTransaction().commit();
             log.info("Успешно");
-            log.info(String.valueOf(employee));
         } catch (HibernateException e) {
             e.printStackTrace();
         }
