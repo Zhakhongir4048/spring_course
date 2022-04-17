@@ -1,7 +1,7 @@
-package com.example.spring_course.hibernate_test_2;
+package com.example.spring_course.hibernate_one_to_many_uni;
 
-import com.example.spring_course.hibernate_test_2.entity.Detail;
-import com.example.spring_course.hibernate_test_2.entity.Employee;
+import com.example.spring_course.hibernate_one_to_many_uni.entity.Department;
+import com.example.spring_course.hibernate_one_to_many_uni.entity.Employee;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,19 +17,20 @@ public class Test1 {
         log.info("Method main starts");
         SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
-                .addAnnotatedClass(Detail.class)
+                .addAnnotatedClass(Department.class)
                 .buildSessionFactory();
         try (sessionFactory) {
             Session currentSession = sessionFactory.getCurrentSession();
-            Employee employee = new Employee("Oleg", "Smirnov", "Sales", 700);
-            Detail detail = new Detail( "Moscow", "987654321", "olejka@gmail.com");
-            employee.setEmpDetail(detail);
+            Department department = new Department("Flowers", 100000, 30000);
+            Employee emp1 = new Employee("Jasur", "Esonov", 120000);
+            Employee emp2 = new Employee("Uktam", "Esonov", 30000);
+            department.addEmployeeToDepartment(emp1);
+            department.addEmployeeToDepartment(emp2);
             currentSession.beginTransaction();
-
-            currentSession.save(employee);
-
+            currentSession.save(department);
             currentSession.getTransaction().commit();
-         } catch (HibernateException e) {
+            log.info("Success");
+        } catch (HibernateException e) {
             e.printStackTrace();
         }
         log.info("Method main ends");

@@ -1,7 +1,7 @@
-package com.example.spring_course.hibernate_test_2;
+package com.example.spring_course.hibernate_one_to_one;
 
-import com.example.spring_course.hibernate_test_2.entity.Detail;
-import com.example.spring_course.hibernate_test_2.entity.Employee;
+import com.example.spring_course.hibernate_one_to_one.entity.Detail;
+import com.example.spring_course.hibernate_one_to_one.entity.Employee;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,9 +9,9 @@ import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Test5 {
+public class Test2 {
 
-    private static final Logger log = LoggerFactory.getLogger(Test5.class);
+    private static final Logger log = LoggerFactory.getLogger(Test2.class);
 
     public static void main(String[] args) {
         log.info("Method main starts");
@@ -21,9 +21,10 @@ public class Test5 {
                 .buildSessionFactory();
         try (sessionFactory; Session currentSession = sessionFactory.getCurrentSession()) {
             currentSession.beginTransaction();
-            Detail detail = currentSession.get(Detail.class, 3);
+            Employee employee = currentSession.get(Employee.class, 1);
             currentSession.getTransaction().commit();
-            log.info(String.valueOf(detail));
+            log.info(String.valueOf(employee));
+            log.info(String.valueOf(employee.getEmpDetail()));
         } catch (HibernateException e) {
             e.printStackTrace();
         }
