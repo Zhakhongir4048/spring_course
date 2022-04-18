@@ -26,8 +26,7 @@ public class Test5 {
             currentSession.delete(employee);
 
             currentSession.createQuery("delete from Employee where name = 'Oleg'")
-                            .executeUpdate();
-
+                    .executeUpdate();
 
             currentSession.getTransaction().commit();
             log.info("Успешно");

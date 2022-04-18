@@ -22,14 +22,14 @@ public class Test1 {
         try (sessionFactory) {
             Session currentSession = sessionFactory.getCurrentSession();
             Employee employee = new Employee("Oleg", "Smirnov", "Sales", 700);
-            Detail detail = new Detail( "Moscow", "987654321", "olejka@gmail.com");
+            Detail detail = new Detail("Moscow", "987654321", "olejka@gmail.com");
             employee.setEmpDetail(detail);
             currentSession.beginTransaction();
 
             currentSession.save(employee);
 
             currentSession.getTransaction().commit();
-         } catch (HibernateException e) {
+        } catch (HibernateException e) {
             e.printStackTrace();
         }
         log.info("Method main ends");
