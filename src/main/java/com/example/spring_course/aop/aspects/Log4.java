@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 @Order(40)
 public class Log4 {
 
-    @Before("com.example.spring_course.aop.aspects.MyPointcuts.allGetMethodsBesidesReturnMagazineUniLibrary()")
-    public void beforeAddAndReturnBesidesReturnMagazineLoggingAdvice() {
-        System.out.println("beforeAddAndReturnBesidesReturnMagazineLoggingAdvice: writing Log #4");
-        System.out.println("--------------------------------------------------------");
-    }
+  @Before("com.example.spring_course.aop.aspects.MyPointcuts.allGetMethodsBesidesReturnMagazineUniLibrary()")
+  public void beforeAddAndReturnBesidesReturnMagazineLoggingAdvice() {
+    System.out.println("beforeAddAndReturnBesidesReturnMagazineLoggingAdvice: writing Log #4");
+    System.out.println("--------------------------------------------------------");
+  }
 
 }

@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Scope;
 @ComponentScan("com.example.spring_course")
 public class JavaConfig {
 
-    @Bean("myPet")
-    @Scope("singleton")
-    public Pet getPet() {
-        return new Dog();
-    }
+  @Bean("myPet")
+  @Scope("singleton")
+  public Pet getPet() {
+    return new Dog();
+  }
 
 }

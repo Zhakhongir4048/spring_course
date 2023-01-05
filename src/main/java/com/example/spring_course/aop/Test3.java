@@ -7,16 +7,17 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Test3 {
 
-    private static final Logger log = LoggerFactory.getLogger(Test3.class);
+  private static final Logger log = LoggerFactory.getLogger(Test3.class);
 
-    public static void main(String[] args) {
-        log.info("Method main starts");
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyConfig.class);
-        SchoolLibrary schoolLibrary = context.getBean(SchoolLibrary.class);
-        String bookName = schoolLibrary.returnBook();
-        log.info("В библиотеку вернули книгу " + bookName);
-        context.close();
-        log.info("Method main ends");
-    }
+  public static void main(String[] args) {
+    log.info("Method main starts");
+    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+        MyConfig.class);
+    SchoolLibrary schoolLibrary = context.getBean(SchoolLibrary.class);
+    String bookName = schoolLibrary.returnBook();
+    log.info("В библиотеку вернули книгу " + bookName);
+    context.close();
+    log.info("Method main ends");
+  }
 
 }
