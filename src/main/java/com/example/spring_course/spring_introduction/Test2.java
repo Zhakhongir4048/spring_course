@@ -5,13 +5,14 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Test2 {
 
-    public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringCourseApplication.class);
-        Person myPerson = context.getBean("personBean", Person.class);
-        myPerson.callYourPet();
-        System.out.println(myPerson.getSurname());
-        System.out.println(myPerson.getAge());
-        context.close();
-    }
+  public static void main(String[] args) {
+    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+        SpringCourseApplication.class);
+    Person myPerson = context.getBean("personBean", Person.class);
+    myPerson.callYourPet();
+    System.out.println(myPerson.getSurname());
+    System.out.println(myPerson.getAge());
+    context.close();
+  }
 
 }
