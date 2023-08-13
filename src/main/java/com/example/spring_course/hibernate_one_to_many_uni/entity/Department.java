@@ -1,21 +1,30 @@
 package com.example.spring_course.hibernate_one_to_many_uni.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
+@ToString(exclude = {"emps"})
 @Table(name = "departments")
 public class Department {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "name")
-    private String departmentName;
+    private String name;
 
     @Column(name = "max_salary")
     private int maxSalary;
@@ -24,13 +33,10 @@ public class Department {
     private int minSalary;
 
     @OneToMany(mappedBy = "department", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    List<Employee> emps;
+    private List<Employee> emps;
 
-    public Department() {
-    }
-
-    public Department(String departmentName, int maxSalary, int minSalary) {
-        this.departmentName = departmentName;
+    public Department(String name, int maxSalary, int minSalary) {
+        this.name = name;
         this.maxSalary = maxSalary;
         this.minSalary = minSalary;
     }
@@ -41,56 +47,6 @@ public class Department {
         }
         emps.add(employee);
         employee.setDepartment(this);
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getDepartmentName() {
-        return departmentName;
-    }
-
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
-
-    public int getMaxSalary() {
-        return maxSalary;
-    }
-
-    public void setMaxSalary(int maxSalary) {
-        this.maxSalary = maxSalary;
-    }
-
-    public int getMinSalary() {
-        return minSalary;
-    }
-
-    public void setMinSalary(int minSalary) {
-        this.minSalary = minSalary;
-    }
-
-    public List<Employee> getEmps() {
-        return emps;
-    }
-
-    public void setEmps(List<Employee> emps) {
-        this.emps = emps;
-    }
-
-    @Override
-    public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", departmentName='" + departmentName + '\'' +
-                ", maxSalary=" + maxSalary +
-                ", minSalary=" + minSalary +
-                '}';
     }
 
 }
