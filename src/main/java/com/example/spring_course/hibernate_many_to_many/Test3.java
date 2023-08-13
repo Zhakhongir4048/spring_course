@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 @Slf4j
-public class Test {
+public class Test3 {
 
     public static void main(String[] args) {
         log.info("Method main starts");
@@ -18,15 +18,9 @@ public class Test {
                 .addAnnotatedClass(Section.class)
                 .buildSessionFactory(); sessionFactory) {
             Session currentSession = sessionFactory.getCurrentSession();
-            Section section1 = new Section("Football");
-            Child child1 = new Child("Zaur", 5);
-            Child child2 = new Child("Masha", 6);
-            Child child3 = new Child("Vasya", 7);
-            section1.addChildToSection(child1);
-            section1.addChildToSection(child2);
-            section1.addChildToSection(child3);
             currentSession.beginTransaction();
-            currentSession.save(section1);
+            Child child = currentSession.get(Child.class, 4);
+            System.out.println("child = " + child);
             currentSession.getTransaction().commit();
             log.info("Success");
         } catch (HibernateException e) {

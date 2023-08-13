@@ -23,43 +23,43 @@ import lombok.Setter;
 @Table(name = "children")
 public class Child {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id")
-  private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
-  @Column(name = "name")
-  private String name;
+    @Column(name = "name")
+    private String name;
 
-  @Column(name = "age")
-  private int age;
+    @Column(name = "age")
+    private int age;
 
-  @ManyToMany(cascade = CascadeType.ALL)
-  @JoinTable(name = "child_section",
-      joinColumns = @JoinColumn(name = "child_id"),
-      inverseJoinColumns = @JoinColumn(name = "section_id")
-  )
-  private List<Section> sections;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "child_section",
+            joinColumns = @JoinColumn(name = "child_id"),
+            inverseJoinColumns = @JoinColumn(name = "section_id")
+    )
+    private List<Section> sections;
 
-  public Child(String name, int age) {
-    this.name = name;
-    this.age = age;
-  }
-
-  public void addSectionToChild(Section section) {
-    if (sections == null) {
-      sections = new ArrayList<>();
+    public Child(String name, int age) {
+        this.name = name;
+        this.age = age;
     }
-    sections.add(section);
-  }
 
-  @Override
-  public String toString() {
-    return "Child{" +
-        "id=" + id +
-        ", name='" + name + '\'' +
-        ", age=" + age +
-        '}';
-  }
+    public void addSectionToChild(Section section) {
+        if (sections == null) {
+            sections = new ArrayList<>();
+        }
+        sections.add(section);
+    }
+
+    @Override
+    public String toString() {
+        return "Child{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 
 }
