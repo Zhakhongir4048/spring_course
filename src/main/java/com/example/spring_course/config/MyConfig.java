@@ -11,14 +11,14 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:myApp.properties")
 public class MyConfig {
 
-  @Bean
-  public Pet catBean() {
-    return new Cat();
-  }
+    @Bean
+    public Pet catBean() {
+        return new Cat();
+    }
 
-  @Bean
-  public Person personBean() {
-    return new Person(catBean());
-  }
+    @Bean
+    public Person personBean() {
+        return new Person(catBean());
+    }
 
 }

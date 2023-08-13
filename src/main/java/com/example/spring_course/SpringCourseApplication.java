@@ -9,8 +9,8 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:myApp.properties")
 public class SpringCourseApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(SpringCourseApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(SpringCourseApplication.class, args);
+    }
 
 }
