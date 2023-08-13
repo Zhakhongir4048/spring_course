@@ -24,45 +24,46 @@ import lombok.Setter;
 @Table(name = "departments")
 public class Department {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id")
-  private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
-  @Column(name = "name")
-  private String departmentName;
+    @Column(name = "name")
+    private String name;
 
-  @Column(name = "max_salary")
-  private int maxSalary;
+    @Column(name = "max_salary")
+    private int maxSalary;
 
-  @Column(name = "min_salary")
-  private int minSalary;
+    @Column(name = "min_salary")
+    private int minSalary;
 
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-  @JoinColumn(name = "department_id")
-  List<Employee> emps;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "department_id")
+    private List<Employee> emps;
 
-  public Department(String departmentName, int maxSalary, int minSalary) {
-    this.departmentName = departmentName;
-    this.maxSalary = maxSalary;
-    this.minSalary = minSalary;
-  }
-
-  public void addEmployeeToDepartment(Employee employee) {
-    if (Objects.isNull(emps)) {
-      emps = new ArrayList<>();
+    public Department(String name, int maxSalary, int minSalary) {
+        this.name = name;
+        this.maxSalary = maxSalary;
+        this.minSalary = minSalary;
     }
-    emps.add(employee);
-  }
 
-  @Override
-  public String toString() {
-    return "Department{" +
-        "id=" + id +
-        ", departmentName='" + departmentName + '\'' +
-        ", maxSalary=" + maxSalary +
-        ", minSalary=" + minSalary +
-        '}';
-  }
+    public void addEmployeeToDepartment(Employee employee) {
+        if (Objects.isNull(emps)) {
+            emps = new ArrayList<>();
+        }
+        emps.add(employee);
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", maxSalary=" + maxSalary +
+                ", minSalary=" + minSalary +
+                ", emps=" + emps +
+                '}';
+    }
 
 }
