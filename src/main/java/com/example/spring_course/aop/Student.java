@@ -11,8 +11,8 @@ import lombok.ToString;
 @ToString
 public class Student {
 
-  private String nameSurname;
-  private int course;
-  private double avgGrade;
+    private String nameSurname;
+    private int course;
+    private double avgGrade;
 
 }
