@@ -11,21 +11,21 @@ import org.hibernate.cfg.Configuration;
 @Slf4j
 public class Test5 {
 
-  public static void main(String[] args) {
-    log.info("Method main starts");
-    SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml")
-        .addAnnotatedClass(Employee.class)
-        .addAnnotatedClass(Detail.class)
-        .buildSessionFactory();
-    try (sessionFactory; Session currentSession = sessionFactory.getCurrentSession()) {
-      currentSession.beginTransaction();
-      Detail detail = currentSession.get(Detail.class, 3);
-      currentSession.getTransaction().commit();
-      log.info(String.valueOf(detail));
-    } catch (HibernateException e) {
-      e.printStackTrace();
+    public static void main(String[] args) {
+        log.info("Method main starts");
+        SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Detail.class)
+                .buildSessionFactory();
+        try (sessionFactory; Session currentSession = sessionFactory.getCurrentSession()) {
+            currentSession.beginTransaction();
+            Detail detail = currentSession.get(Detail.class, 3);
+            currentSession.getTransaction().commit();
+            log.info(String.valueOf(detail));
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        log.info("Method main ends");
     }
-    log.info("Method main ends");
-  }
 
 }
