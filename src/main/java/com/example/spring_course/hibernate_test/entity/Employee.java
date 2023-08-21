@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,31 +17,31 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "employees")
+@Table(name = "employees_hibernate_test")
 public class Employee {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id", nullable = false)
-  private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private int id;
 
-  @Column(name = "name")
-  private String name;
+    @Column(name = "name")
+    private String name;
 
-  @Column(name = "surname")
-  private String surname;
+    @Column(name = "surname")
+    private String surname;
 
-  @Column(name = "department")
-  private String department;
+    @Column(name = "department")
+    private String department;
 
-  @Column(name = "salary")
-  private int salary;
+    @Column(name = "salary")
+    private int salary;
 
-  public Employee(String name, String surname, String department, int salary) {
-    this.name = name;
-    this.surname = surname;
-    this.department = department;
-    this.salary = salary;
-  }
+    public Employee(String name, String surname, String department, int salary) {
+        this.name = name;
+        this.surname = surname;
+        this.department = department;
+        this.salary = salary;
+    }
 
 }
